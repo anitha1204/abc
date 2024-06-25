@@ -121,9 +121,9 @@ function Login() {
     const handleSubmit = async () => {
         try {
             const response = await axios.post(`https://food-1-psa1.onrender.com/api/login`, userData);
+            console.log("Response:", response); // Log the entire response object
+    
             if (response.data.success) {
-                // toast.success(response.data.message);
-                // toast("Redirecting to home page");
                 console.log("Token received:", response.data.data);
                 localStorage.setItem("token", response.data.data);
                 navigate('/'); // Redirect to home page upon successful login
@@ -131,6 +131,7 @@ function Login() {
                 toast.error(response.data.message);
             }
         } catch (error) {
+            console.error("Error in handleSubmit:", error); // Log the full error object for debugging
             if (error.response) {
                 // Server responded with a status other than 200 range
                 toast.error(`Error: ${error.response.data.message}`);
@@ -143,6 +144,7 @@ function Login() {
             }
         }
     };
+    
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
