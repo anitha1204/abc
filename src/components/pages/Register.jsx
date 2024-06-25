@@ -155,14 +155,15 @@ function Register() {
             const response = await axios.post("https://food-1-psa1.onrender.com/api/signin", values, {
                 withCredentials: true,
             });
-            console.log(response.data.message);
+            console.log("Response data:", response.data);
             toast.success(response.data.message);
             navigate('/login');
         } catch (err) {
-            console.log(err);
+            console.error("Error response:", err.response);
             toast.error("Registration failed. Please try again.");
         }
     };
+    
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
