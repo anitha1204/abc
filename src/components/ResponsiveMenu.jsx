@@ -25,6 +25,14 @@ const navbarLinks = [
         name: "Contact ",
         link:"/contact", 
      },
+     {
+      name: "Register",
+      link:"/register", 
+   },
+   {
+    name: "Popup",
+    link:"/popup", 
+ },
     
 
 ] 
