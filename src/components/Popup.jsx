@@ -174,7 +174,7 @@ const Popup = () => {
             </div>
             <div>
               <IoCloseOutline
-                className="text-2xl cursor-pointer"
+                className="text-2xl cursoR-pointer"
                 onClick={closePopup}
               />
             </div>
