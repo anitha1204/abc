@@ -122,9 +122,9 @@ function Login() {
         try {
             const response = await axios.post(`https://food-1-psa1.onrender.com/api/login`, userData);
             if (response.data.success) {
-                toast.success(response.data.message);
+                toast.success("dert ndfd")
                 toast("Redirecting to home page");
-                // localStorage.setItem("token", response.data.data);
+                localStorage.setItem("token", response.data.data);
                 navigate('/'); // Redirect to home page upon successful login
             } else {
                 toast.error(response.data.message);
