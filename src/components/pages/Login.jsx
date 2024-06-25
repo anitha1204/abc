@@ -124,7 +124,7 @@ function Login() {
             if (response.data.success) {
                 toast.success(response.data.message);
                 toast("Redirecting to home page");
-                localStorage.setItem("token", response.data.data);
+                // localStorage.setItem("token", response.data.data);
                 navigate('/'); // Redirect to home page upon successful login
             } else {
                 toast.error(response.data.message);
