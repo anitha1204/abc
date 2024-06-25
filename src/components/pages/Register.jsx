@@ -31,17 +31,9 @@ function Register() {
             console.log(response.data.message);
             toast.success(response.data.message);
             navigate('/login');
-        } catch (error) {
-            if (error.response) {
-                // Server responded with a status other than 200 range
-                toast.error(`Error: ${error.response.data.message}`);
-            } else if (error.request) {
-                // Request was made but no response was received
-                toast.error("Network error. Please check your connection.");
-            } else {
-                // Something happened in setting up the request that triggered an Error
-                toast.error("An unexpected error occurred. Please try again.");
-            }
+        } catch (err) {
+            console.log(err);
+            toast.error("Registration failed. Please try again.");
         }
     };
 
