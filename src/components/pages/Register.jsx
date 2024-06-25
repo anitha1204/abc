@@ -155,22 +155,30 @@ function Register() {
             const response = await axios.post("https://food-1-psa1.onrender.com/api/signin", values, {
                 withCredentials: true,
             });
-            console.log("Response data:", response.data);
+            console.log(response.data.message);
             toast.success(response.data.message);
             navigate('/login');
         } catch (err) {
-            console.error("Error response:", err.response);
-            toast.error("Registration failed. Please try again.");
+            console.error("Axios error:", err);
+            if (err.response) {
+                console.error("Response error:", err.response.data);
+                toast.error(err.response.data.message || "Registration failed. Please try again.");
+            } else if (err.request) {
+                console.error("Request error:", err.request);
+                toast.error("Network error. Please check your connection.");
+            } else {
+                console.error("General error:", err.message);
+                toast.error("Registration failed. Please try again.");
+            }
         }
     };
-    
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
                 <h1 className="text-2xl font-bold mb-4">NICE TO MEET YOU</h1>
                 <Form layout='vertical' onFinish={handleSubmit}>
-                    <Form.Item label='Name' name='Username'>
+                    <Form.Item label='Name' name='Username' rules={[{ required: true, message: 'Please input your Name!' }]}>
                         <Input 
                             placeholder="Name" 
                             name="Username" 
@@ -179,7 +187,7 @@ function Register() {
                             className="w-full p-2 border border-gray-300 rounded-md"
                         />
                     </Form.Item>
-                    <Form.Item label='Email' name='Useremail'>
+                    <Form.Item label='Email' name='Useremail' rules={[{ required: true, message: 'Please input your Email!', type: 'email' }]}>
                         <Input 
                             placeholder="Email" 
                             name="Useremail" 
@@ -188,7 +196,7 @@ function Register() {
                             className="w-full p-2 border border-gray-300 rounded-md"
                         />
                     </Form.Item>
-                    <Form.Item label='Password' name='Password'>
+                    <Form.Item label='Password' name='Password' rules={[{ required: true, message: 'Please input your Password!' }]}>
                         <Input.Password 
                             placeholder="Password" 
                             name="Password" 
