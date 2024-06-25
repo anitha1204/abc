@@ -159,17 +159,8 @@ function Register() {
             toast.success(response.data.message);
             navigate('/login');
         } catch (err) {
-            console.error("Axios error:", err);
-            if (err.response) {
-                console.error("Response error:", err.response.data);
-                toast.error(err.response.data.message || "Registration failed. Please try again.");
-            } else if (err.request) {
-                console.error("Request error:", err.request);
-                toast.error("Network error. Please check your connection.");
-            } else {
-                console.error("General error:", err.message);
-                toast.error("Registration failed. Please try again.");
-            }
+            console.log(err);
+            toast.error("Registration failed. Please try again.");
         }
     };
 
@@ -178,7 +169,7 @@ function Register() {
             <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
                 <h1 className="text-2xl font-bold mb-4">NICE TO MEET YOU</h1>
                 <Form layout='vertical' onFinish={handleSubmit}>
-                    <Form.Item label='Name' name='Username' rules={[{ required: true, message: 'Please input your Name!' }]}>
+                    <Form.Item label='Name' name='Username'>
                         <Input 
                             placeholder="Name" 
                             name="Username" 
@@ -187,7 +178,7 @@ function Register() {
                             className="w-full p-2 border border-gray-300 rounded-md"
                         />
                     </Form.Item>
-                    <Form.Item label='Email' name='Useremail' rules={[{ required: true, message: 'Please input your Email!', type: 'email' }]}>
+                    <Form.Item label='Email' name='Useremail'>
                         <Input 
                             placeholder="Email" 
                             name="Useremail" 
@@ -196,7 +187,7 @@ function Register() {
                             className="w-full p-2 border border-gray-300 rounded-md"
                         />
                     </Form.Item>
-                    <Form.Item label='Password' name='Password' rules={[{ required: true, message: 'Please input your Password!' }]}>
+                    <Form.Item label='Password' name='Password'>
                         <Input.Password 
                             placeholder="Password" 
                             name="Password" 
