@@ -322,7 +322,7 @@ function Register() {
     const handleSubmit = async () => {
         console.log("User Data:", userData); // Debug log
         try {
-            const response = await axios.post(`https://food-ipp7.onrender.com/api/register`, userData, {
+            const response = await axios.post(`https://food-1-psa1.onrender.com/api/register`, userData, {
                 withCredentials: true
               });
             console.log("Response Data:", response.data); // Debug log
