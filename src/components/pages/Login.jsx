@@ -148,6 +148,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
+// const apiUrl = "https://food-ipp7.onrender.com"; // Ensure this is correct
+// console.log("url", apiUrl);
+
 function Login() {
     const [userData, setUserData] = useState({
         Useremail: "",
@@ -165,7 +168,7 @@ function Login() {
 
     const handleSubmit = async (values) => {
         try {
-            const response = await axios.post("http://localhost:2000/api/login", values);
+            const response = await axios.post(`https://food-ipp7.onrender.com/api/login`, values);
             if (response.data.success) {
                 toast.success(response.data.message);
                 toast("Redirecting to home page");
