@@ -134,7 +134,7 @@ function Login() {
             console.error("Error in handleSubmit:", error); // Log the full error object for debugging
             if (error.response) {
                 // Server responded with a status other than 200 range
-                toast.error(`Error: ${error.response.data.message}`);
+                toast.error(`Error: ${error.response.data.message || 'An error occurred'}`);
             } else if (error.request) {
                 // Request was made but no response was received
                 toast.error("Network error. Please check your connection.");
@@ -144,7 +144,6 @@ function Login() {
             }
         }
     };
-    
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -192,5 +191,3 @@ function Login() {
 }
 
 export default Login;
-
-
