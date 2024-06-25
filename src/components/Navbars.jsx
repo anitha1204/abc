@@ -24,7 +24,7 @@ const Navbars = () => {
           <div className="container mx-auto py-1 hidden sm:block">
             <div className="flex items-center justify-between">
               <p className="text-sm">20% off on next Table booking</p>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 cursor-pointer">
                 <RiFacebookBoxLine size={25} />
                 <FaInstagram size={25} />
                 <CiLinkedin size={25} />
