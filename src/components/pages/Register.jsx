@@ -99,20 +99,42 @@ function Register() {
         }));
     };
 
-    const handleSubmit = async (values) => {
-        try {
-            const response = await axios.post("https://food-1-psa1.onrender.com/api/signin", values, {
-                withCredentials: true,
-            });
-            console.log(response.data.message);
-            toast.success(response.data.message);
-            navigate('/login');
-        } catch (err) {
-            console.error(err);
-            toast.error("Registration failed. Please try again.");
-        }
-    };
+    // const handleSubmit = async (values) => {
+    //     try {
+    //         const response = await axios.post("https://food-1-psa1.onrender.com/api/signin", values, {
+    //             withCredentials: true,
+    //         });
+    //         console.log(response.data.message);
+    //         toast.success(response.data.message);
+    //         navigate('/login');
+    //     } catch (err) {
+    //         console.error(err);
+    //         toast.error("Registration failed. Please try again.");
+    //     }
+    // };
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+          const response = await axios.post("https://food-1-psa1.onrender.com/api/signin", values); // Ensure the endpoint is correct
+          console.log(response.data);
+          toast.success("Success Notification");
+          navigate('/login');
+        } catch (error) {
+          console.error("Error:", error);
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            toast.error(`Error: ${error.response.data.message || error.response.status}`);
+          } else if (error.request) {
+            // The request was made but no response was received
+            toast.error("Network error. Please check your connection.");
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            toast.error("An unexpected error occurred. Please try again.");
+          }
+        }
+      };
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
