@@ -126,7 +126,6 @@
 // // export default Register;
 
 
-
 import React, { useState } from "react";
 import { Form, Input, Button } from 'antd';
 import { Link, useNavigate } from "react-router-dom";
