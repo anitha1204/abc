@@ -120,7 +120,7 @@ function Login() {
 
     const handleSubmit = async () => {
         try {
-            const response = await axios.post(`https://food-1-psa1.onrender.com/api/login`, userData);
+            const response = await axios.post('https://food-1-psa1.onrender.com/api/login', userData);
             console.log("Response:", response); // Log the entire response object
     
             if (response.data.success) {
@@ -134,7 +134,7 @@ function Login() {
             console.error("Error in handleSubmit:", error); // Log the full error object for debugging
             if (error.response) {
                 // Server responded with a status other than 200 range
-                toast.error(`Error: ${error.response.data.message || 'An error occurred'}`);
+                toast.error(`Error: ${error.response.data.message}`);
             } else if (error.request) {
                 // Request was made but no response was received
                 toast.error("Network error. Please check your connection.");
