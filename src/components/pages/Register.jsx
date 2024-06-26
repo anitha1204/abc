@@ -24,7 +24,7 @@ function Register() {
 
     const handleSubmit = async (values) => {
         try {
-            const response = await axios.post("http://localhost:2000/api/Register", values, {
+            const response = await axios.post("http://localhost:2000/api/signin", values, {
                 withCredentials: true,
             });
             console.log(response.data.message);
