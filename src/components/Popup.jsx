@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -17,7 +15,8 @@ const Popup = () => {
     Username: '',
     Useremail: '',
     Address: '',
-    Guest:'',
+    Guest: '',
+    Password: '' // Added Password field
   };
 
   const [UserDatas, setUserDatas] = useState(initialData);
@@ -104,6 +103,14 @@ const Popup = () => {
               name="Address"
               placeholder="Address"
               value={UserDatas.Address}
+              onChange={handleOnChange}
+              className="w-full rounded-full border border-gray-300 px-2 py-1 mb-4"
+            />
+            <input
+              type="password"
+              name="Password"
+              placeholder="Password"
+              value={UserDatas.Password}
               onChange={handleOnChange}
               className="w-full rounded-full border border-gray-300 px-2 py-1 mb-4"
             />
