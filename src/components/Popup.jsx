@@ -16,14 +16,14 @@ const Popup = () => {
     Useremail: '',
     Address: '',
     Guest: '',
-    Password: ''
+    Password: '' // Added Password field
   };
 
-  const [formData, setFormData] = useState(initialData);
+  const [UserDatas, setUserDatas] = useState(initialData);
 
   const handleOnChange = (e) => {
-    setFormData((prevData) => ({
-      ...prevData,
+    setUserDatas((prevState) => ({
+      ...prevState,
       [e.target.name]: e.target.value
     }));
   };
@@ -31,22 +31,25 @@ const Popup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${apiUrl}/post`, formData);
-      console.log("Response:", response.data);
+      const response = await axios.post(`${apiUrl}/api/post`, UserDatas); // Ensure the endpoint is correct
+      console.log(response.data);
       toast.success("Success Notification");
       navigate('/');
     } catch (error) {
       console.error("Error:", error);
       if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
         toast.error(`Error: ${error.response.data.message || error.response.status}`);
       } else if (error.request) {
+        // The request was made but no response was received
         toast.error("Network error. Please check your connection.");
       } else {
+        // Something happened in setting up the request that triggered an Error
         toast.error("An unexpected error occurred. Please try again.");
       }
     }
   };
-  
 
   const closePopup = () => {
     navigate(location.state?.from || '/');
@@ -75,46 +78,41 @@ const Popup = () => {
               type="text"
               name="Username"
               placeholder="Name"
-              value={formData.Username}
+              value={UserDatas.Username}
               onChange={handleOnChange}
               className="w-full rounded-full border border-gray-300 px-2 py-1 mb-4"
-              autoComplete="username" // Add autocomplete attribute
             />
             <input
               type="email"
               name="Useremail"
               placeholder="Email"
-              value={formData.Useremail}
+              value={UserDatas.Useremail}
               onChange={handleOnChange}
               className="w-full rounded-full border border-gray-300 px-2 py-1 mb-4"
-              autoComplete="email" // Add autocomplete attribute
             />
             <input
               type="text"
               name="Guest"
               placeholder="Guest"
-              value={formData.Guest}
+              value={UserDatas.Guest}
               onChange={handleOnChange}
               className="w-full rounded-full border border-gray-300 px-2 py-1 mb-4"
-              autoComplete="off" // Customize autocomplete as per your needs
             />
             <input
               type="text"
               name="Address"
               placeholder="Address"
-              value={formData.Address}
+              value={UserDatas.Address}
               onChange={handleOnChange}
               className="w-full rounded-full border border-gray-300 px-2 py-1 mb-4"
-              autoComplete="street-address" // Add autocomplete attribute
             />
             <input
               type="password"
               name="Password"
               placeholder="Password"
-              value={formData.Password}
+              value={UserDatas.Password}
               onChange={handleOnChange}
               className="w-full rounded-full border border-gray-300 px-2 py-1 mb-4"
-              autoComplete="current-password" // Add autocomplete attribute
             />
             
             <div className="flex justify-center">
@@ -133,3 +131,5 @@ const Popup = () => {
 };
 
 export default Popup;
+
+
