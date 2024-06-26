@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import toast from "react-hot-toast";
 
-const apiUrl = "https://food-1-psa1.onrender.com"; // Ensure this is correct
+const apiUrl = "http://localhost:2000"; // Ensure this is correct
 console.log("url", apiUrl);
 
 const Popup = () => {
