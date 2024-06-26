@@ -26,7 +26,7 @@ function Login() {
 
     const handleSubmit = async (values) => {
         try {
-            const response = await axios.post(`https://food-1-psa1.onrender.com/api/login`, values);
+            const response = await axios.post(`https://food-1-psa1.onrender.com/login`, values);
             if (response.data.success) {
                 toast.success(response.data.message);
                 toast("Redirecting to home page");

@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import toast from "react-hot-toast";
 
-const apiUrl = "http://localhost:2000"; // Ensure this is correct
+const apiUrl = "https://food-1-psa1.onrender.com"; // Ensure this is correct
 console.log("url", apiUrl);
 
 const Popup = () => {
@@ -31,12 +31,12 @@ const Popup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${apiUrl}api/post`, formData); // Ensure the endpoint is correct
+      const response = await axios.post(`${apiUrl}/post`, formData); // Ensure the endpoint is correct
       console.log(response.data);
       toast.success("Success Notification");
       navigate('/');
     } catch (error) {
-      console.error("Error:", error); // Log the full error for debugging
+      console.error("Error:", error);
       if (error.response) {
         toast.error(`Error: ${error.response.data.message || error.response.status}`);
       } else if (error.request) {
@@ -46,7 +46,6 @@ const Popup = () => {
       }
     }
   };
-  
 
   const closePopup = () => {
     navigate(location.state?.from || '/');
