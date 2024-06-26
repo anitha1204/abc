@@ -24,7 +24,7 @@ function Register() {
 
     const handleSubmit = async (values) => {
         try {
-            const response = await axios.post("http://localhost:2000/api/signin", values, {
+            const response = await axios.post("https://food-1-psa1.onrender.com/api/signin", values, {
                 withCredentials: true,
             });
             console.log(response.data.message);
