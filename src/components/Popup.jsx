@@ -31,8 +31,8 @@ const Popup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${apiUrl}/post`, formData); // Ensure the endpoint is correct
-      console.log(response.data);
+      const response = await axios.post(`${apiUrl}/post`, formData);
+      console.log("Response:", response.data);
       toast.success("Success Notification");
       navigate('/');
     } catch (error) {
@@ -46,6 +46,7 @@ const Popup = () => {
       }
     }
   };
+  
 
   const closePopup = () => {
     navigate(location.state?.from || '/');
